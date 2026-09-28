@@ -35,7 +35,7 @@ const (
 	// commandWaitDelay bounds how long the handler keeps reading stdout/stderr
 	// after the command exits or times out. Child processes that inherited the
 	// output pipes can otherwise keep the request open until they exit.
-	commandWaitDelay = 2 * time.Second
+	commandWaitDelay = 100 * time.Millisecond
 )
 
 // ExecuteRequest defines command execution request body

@@ -104,7 +104,7 @@ func TestExecuteHandler_TimeoutKillsChildProcesses(t *testing.T) {
 
 	assert.Equal(t, TimeoutExitCode, resp.ExitCode)
 	assert.Contains(t, resp.Stderr, "Command timed out")
-	assert.Less(t, elapsed, 10*time.Second, "handler waited for the child process after the timeout")
+	assert.Less(t, elapsed, 2*time.Second, "handler used the SDK's response margin after the timeout")
 	assert.Eventually(t, func() bool { return processExited(pid) }, 5*time.Second, 50*time.Millisecond,
 		"child process %d is still running after the timeout", pid)
 }
